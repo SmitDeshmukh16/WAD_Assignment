@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In & Sign Up</title>
+</head>
+<body>
+    <div id="signin-section">
+        <h2>Sign In</h2>
+        <form id="signin-form">
+            <input type="text" id="signin-username" placeholder="Username" required><br><br>
+            <input type="password" id="signin-password" placeholder="Password" required><br><br>
+            <button type="submit">Sign In</button><br><br>
+        </form>
+        <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+    </div>
+
+    <div id="signup-section" style="display: none;">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <input type="text" id="signup-username" placeholder="Username" required><br><br>
+            <input type="password" id="signup-password" placeholder="Password" required><br><br>
+            <button type="submit">Sign Up</button><br><br>
+        </form>
+        <p>Already have an account? <a href="#" id="show-signin">Sign In</a></p>
+    </div>
+    <script>
+        document.getElementById("show-signup").addEventListener("click", function () {
+            document.getElementById("signin-section").style.display = "none";
+            document.getElementById("signup-section").style.display = "block";
+        });
+
+        document.getElementById("show-signin").addEventListener("click", function () {
+            document.getElementById("signup-section").style.display = "none";
+            document.getElementById("signin-section").style.display = "block";
+        });
+
+        document.getElementById("signup-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let username = document.getElementById("signup-username").value;
+            let password = document.getElementById("signup-password").value;
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            if (users.find(user => user.username === username)) {
+                alert("User already exists!");
+                return;
+            }
+
+            users.push({ username, password });
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Sign up successful!");
+        });
+
+        document.getElementById("signin-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let username = document.getElementById("signin-username").value;
+            let password = document.getElementById("signin-password").value;
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            let user = users.find(user => user.username === username && user.password === password);
+            if (user) {
+                alert("Sign in successful!");
+                sendDataToServer({ username, password });
+            } else {
+                alert("Invalid credentials!");
+            }
+        });
+
+        function sendDataToServer(data) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://dummyurl.com/api/signin", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log("Data sent successfully");
+                    localStorage.setItem("user", JSON.stringify(data));
+                }
+            };
+            xhr.send(JSON.stringify(data));
+        }
+    </script>
+</body>
+</html>

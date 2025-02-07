@@ -1,0 +1,374 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+:root {
+    --primary: #8b5cf6;
+    --secondary: #6d28d9;
+    --background: #1e1e2e;
+    --text: #e4e4e7;
+    --card-bg: #2a2a3a;
+    --particle-color: rgba(139, 92, 246, 0.3);
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+body::before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 15% 15%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 45% 45%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 75% 35%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 25% 65%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 85% 25%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 65% 85%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 95% 55%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 35% 85%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 55% 25%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 65% 75%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 85% 95%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 5% 95%, var(--particle-color) 3px, transparent 3px);
+    background-size: 100% 100%;
+    animation: particleMotion 20s linear infinite;
+}
+
+/* Update the second layer of particles in body::after */
+body::after {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 25% 25%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 55% 15%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 85% 45%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 15% 75%, var(--particle-color) 3px, transparent 3px),
+        radial-gradient(circle at 75% 75%, var(--particle-color) 3px, transparent 3px);
+    background-size: 100% 100%;
+    animation: particleMotion2 15s linear infinite;
+}
+
+@keyframes particleMotion {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-10px, 10px);
+    }
+
+    50% {
+        transform: translate(5px, -5px);
+    }
+
+    75% {
+        transform: translate(-8px, -8px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes particleMotion2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(8px, -8px);
+    }
+
+    50% {
+        transform: translate(-5px, 5px);
+    }
+
+    75% {
+        transform: translate(10px, 10px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(42, 42, 58, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+
+/* Sections */
+section {
+    padding: 5rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+#home {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 80px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.tagline {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Button styles */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.button-primary {
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.button-secondary {
+    background: white;
+    color: var(--primary);
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.button-primary:hover,
+.button-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: rgba(42, 42, 58, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(240, 236, 236, 0.1);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tech-tag {
+    background: var(--background);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+
+/* Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background: rgba(42, 42, 58, 0.9);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.skill-card {
+    background: rgba(42, 42, 58, 0.9);
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(249, 248, 248, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 150px;
+    height: 150px;
+    animation: cardFloat 6s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(1deg);
+    }
+}
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.2);
+}
+
+.skill-logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #home {
+        flex-direction: column-reverse;
+        text-align: center;
+        height: auto;
+    }
+
+    .nav-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .button-group {
+        justify-content: center;
+    }
+}
