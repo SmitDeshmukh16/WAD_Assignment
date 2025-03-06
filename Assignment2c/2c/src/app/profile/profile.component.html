@@ -1,0 +1,10 @@
+<div class="profile-container" *ngIf="user">
+    <h2>Welcome, {{ user.name }}</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <button (click)="logout()">Logout</button>
+</div>
+
+<div class="profile-container" *ngIf="!user">
+    <p>Please <a routerLink="/login">login</a> to view your profile.</p>
+</div>
