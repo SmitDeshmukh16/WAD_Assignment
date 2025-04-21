@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load jQuery Mobile CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- Load jQuery Mobile JS -->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Demo of jQuery Mobile</title>
+</head>
+<body>
+    <!-- Page container -->
+    <div data-role="page" style="background-color:aliceblue;">
+        <!-- Header -->
+        <div data-role="header" data-theme="b">
+            <h1>My Photo Gallery</h1>
+        </div>
+        <!-- Navigation Bar -->
+        <div data-role="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login_register.html">Register for Newsletter</a></li>
+            </ul>
+        </div>
+        <!-- Main Content (Gallery) -->
+        <center><h3>Gallery</h3></center>
+        <div class="content">
+            <center>
+                <!-- Row of images -->
+                <div class="rows">
+                    <img src="img1.jpg" alt="Image 1" width="240" height="200">
+                    <img src="img2.jpg" alt="Image 2" width="240" height="200">
+                    <img src="img3.jpg" alt="Image 3" width="240" height="200">
+                </div>
+                <div class="columns">
+                    <img src="img4.jpg" alt="Image 4" width="240" height="200">
+                    <img src="img5.jpg" alt="Image 5" width="240" height="200">
+                </div>
+            </center>
+        </div>
+    </div>
+</body>
+</html>
